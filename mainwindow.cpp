@@ -1,10 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <cmath>
+#include <string>
+#include <vector>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
-{   this->setFixedSize(QSize(396,336));
+{
     ui->setupUi(this);
 }
 MainWindow::~MainWindow()
@@ -123,4 +125,87 @@ void MainWindow::on_pushButton_clicked()
         }
     }
 
+}
+
+std::string generateGrayarr(int n, int x)
+{
+    if (n <= 0)
+        return "Error";
+    else if (x >= pow(2,n) || x < 0)
+        return "Error";
+
+    std::vector<std::string> arr;
+    // start with one-bit pattern
+    arr.push_back("0");
+    arr.push_back("1");
+
+    // Every iteration of this loop generates 2*i codes from previously
+    // generated i codes.
+    int i, j;
+    for (i = 2; i < (1<<n); i = i<<1)
+    {
+        // Enter the prviously generated codes again in arr[] in reverse
+        // order. Nor arr[] has double number of codes.
+        for (j = i-1 ; j >= 0 ; j--)
+            arr.push_back(arr[j]);
+
+        // append 0 to the first half
+        for (j = 0 ; j < i ; j++)
+            arr[j] = "0" + arr[j];
+
+        // append 1 to the second half
+        for (j = i ; j < 2*i ; j++)
+            arr[j] = "1" + arr[j];
+    }
+    return arr[x];
+}
+int FindinGray(int n, std::string a)
+{
+    if (n <= 0)
+        return 0;
+
+    std::vector<std::string> arr;
+    // start with one-bit pattern
+    arr.push_back("0");
+    arr.push_back("1");
+
+    // Every iteration of this loop generates 2*i codes from previously
+    // generated i codes.
+    int i, j;
+    for (i = 2; i < (1<<n); i = i<<1)
+    {
+        // Enter the prviously generated codes again in arr[] in reverse
+        // order. Nor arr[] has double number of codes.
+        for (j = i-1 ; j >= 0 ; j--)
+            arr.push_back(arr[j]);
+
+        // append 0 to the first half
+        for (j = 0 ; j < i ; j++)
+            arr[j] = "0" + arr[j];
+
+        // append 1 to the second half
+        for (j = i ; j < 2*i ; j++)
+            arr[j] = "1" + arr[j];
+    }
+    int index;
+    for (index=0;arr[index]!=a;index++) {
+        if(index==pow(2,n)-1) return 0;
+    }
+    return index;
+}
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString bits = ui->lineEdit->text();
+    QString number = ui->lineEdit_2->text();
+    int x = number.toInt();
+    int y = bits.toInt();
+    if (bits.isEmpty()&&number.isEmpty()) {
+        ui->lineEdit_3->setText("Error");
+    }
+    else if (ui->comboBox->currentIndex()==0) {
+        ui->lineEdit_3->setText(QString::fromStdString(generateGrayarr(y,x)));
+    }
+    else if (ui->comboBox->currentIndex()==1) {
+        ui->lineEdit_3->setText(QString::number(FindinGray(y,number.toStdString())));
+    }
 }
