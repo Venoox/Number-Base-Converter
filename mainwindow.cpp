@@ -127,12 +127,12 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
-std::string generateGrayarr(int n, int x)
+std::string FindinDecimal(int n, int x) //n is n-bit Gray code array, x is index of the array we need to return
 {
     if (n <= 0)
-        return "Error";
+        return "Cannot be negative!";
     else if (x >= pow(2,n) || x < 0)
-        return "Error";
+        return "Out of range!";
 
     std::vector<std::string> arr;
     // start with one-bit pattern
@@ -159,10 +159,10 @@ std::string generateGrayarr(int n, int x)
     }
     return arr[x];
 }
-int FindinGray(int n, std::string a)
+int FindinGray(int n, std::string input)
 {
     if (n <= 0)
-        return 0;
+        return -2;
 
     std::vector<std::string> arr;
     // start with one-bit pattern
@@ -187,9 +187,10 @@ int FindinGray(int n, std::string a)
         for (j = i ; j < 2*i ; j++)
             arr[j] = "1" + arr[j];
     }
+    //Search the array with input
     int index;
-    for (index=0;arr[index]!=a;index++) {
-        if(index==pow(2,n)-1) return 0;
+    for (index=0;arr[index]!=input;index++) {
+        if(index==pow(2,n)-1) return -1;
     }
     return index;
 }
@@ -200,12 +201,21 @@ void MainWindow::on_pushButton_2_clicked()
     int x = number.toInt();
     int y = bits.toInt();
     if (bits.isEmpty()&&number.isEmpty()) {
-        ui->lineEdit_3->setText("Error");
+        ui->lineEdit_3->setText("No input!");
     }
     else if (ui->comboBox->currentIndex()==0) {
-        ui->lineEdit_3->setText(QString::fromStdString(generateGrayarr(y,x)));
+        ui->lineEdit_3->setText(QString::fromStdString(FindinDecimal(y,x)));
     }
     else if (ui->comboBox->currentIndex()==1) {
-        ui->lineEdit_3->setText(QString::number(FindinGray(y,number.toStdString())));
+        int index = FindinGray(y,number.toStdString());
+        if (index==-1) {
+            ui->lineEdit_3->setText("Out of range!");
+        }
+        else if (index==-2) {
+            ui->lineEdit_3->setText("Cannot be negative!");
+        }
+        else {
+        ui->lineEdit_3->setText(QString::number(index));
+        }
     }
 }
