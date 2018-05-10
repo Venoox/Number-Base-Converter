@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>441</width>
-    <height>362</height>
+    <width>429</width>
+    <height>368</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +18,18 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>429</width>
+    <height>368</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>429</width>
+    <height>368</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Number Base Converter</string>
@@ -33,7 +45,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -133,8 +145,8 @@
        <rect>
         <x>140</x>
         <y>220</y>
-        <width>47</width>
-        <height>13</height>
+        <width>51</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
@@ -169,7 +181,7 @@
        <rect>
         <x>140</x>
         <y>10</y>
-        <width>81</width>
+        <width>111</width>
         <height>21</height>
        </rect>
       </property>
@@ -198,9 +210,9 @@
      <widget class="QLineEdit" name="lineEdit">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>30</y>
-        <width>91</width>
+        <width>101</width>
         <height>31</height>
        </rect>
       </property>
@@ -208,9 +220,9 @@
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>10</y>
-        <width>81</width>
+        <width>111</width>
         <height>16</height>
        </rect>
       </property>
@@ -234,9 +246,9 @@
      <widget class="QComboBox" name="comboBox">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>300</x>
         <y>30</y>
-        <width>91</width>
+        <width>101</width>
         <height>31</height>
        </rect>
       </property>
@@ -256,7 +268,7 @@
        <rect>
         <x>130</x>
         <y>30</y>
-        <width>161</width>
+        <width>151</width>
         <height>31</height>
        </rect>
       </property>
@@ -267,7 +279,7 @@
         <x>130</x>
         <y>160</y>
         <width>161</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
       </property>
      </widget>
@@ -276,7 +288,7 @@
        <rect>
         <x>130</x>
         <y>10</y>
-        <width>91</width>
+        <width>121</width>
         <height>16</height>
        </rect>
       </property>
@@ -287,9 +299,9 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>290</x>
         <y>10</y>
-        <width>91</width>
+        <width>141</width>
         <height>16</height>
        </rect>
       </property>
@@ -302,8 +314,8 @@
        <rect>
         <x>130</x>
         <y>140</y>
-        <width>47</width>
-        <height>13</height>
+        <width>51</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
@@ -318,8 +330,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>441</width>
-     <height>21</height>
+     <width>429</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>
